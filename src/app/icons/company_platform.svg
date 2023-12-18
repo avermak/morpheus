@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>company_platform</title>
+    <g id="company_platform" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FFFFFF" x="14" y="45" width="228" height="140" rx="8"></rect>
+        <line x1="20.5" y1="64.5" x2="236.5" y2="64.5" id="Line" stroke="#979797" stroke-width="3" stroke-linecap="square"></line>
+        <line x1="20.5" y1="164.5" x2="236.5" y2="164.5" id="Line" stroke="#979797" stroke-width="3" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#444444" stroke-width="5" x="16.5" y="47.5" width="223" height="135" rx="8"></rect>
+    </g>
+</svg>

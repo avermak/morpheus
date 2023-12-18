@@ -1,0 +1,29 @@
+.objectsMenu {
+    position: absolute;
+    border: #8888 1px solid;
+    margin-top: 2px;
+    margin-left: 1px;
+    background-color: inherit;
+    width: 20%;
+    height: 80%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    overflow: auto;
+}
+
+.objectsMenuSection {
+    border-bottom: #8888 1px solid;
+}
+
+.objectsMenuSection > div:first-child {
+    background-color: #8888;
+    padding: 5px;
+}
+
+.objectsMenuSection > div:nth-child(2) {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+}

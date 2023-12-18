@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>404</title>
+    <g id="404" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Tahoma-Bold, Tahoma" font-size="200" font-weight="bold">
+        <text id="?" stroke="#888888" fill="#EDEDED" fill-rule="nonzero">
+            <tspan x="72" y="184">?</tspan>
+        </text>
+    </g>
+</svg>

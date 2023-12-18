@@ -1,0 +1,24 @@
+.container {
+    width: 300px;
+    border-left: #666 3px double;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.header {
+    background-color: #8888;
+    padding: 5px;
+    color: #bbb;
+    font-size: 0.75rem;
+}
+.content {
+    background-color: #4447;
+    flex: 1;
+    padding: 5px;
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: #bbb;
+    overflow: auto;
+    height: 50%;
+}

@@ -1,0 +1,75 @@
+.objectWrapper {
+    width: 75px;
+}
+
+.objectIcon {
+    width: 100%;
+}
+
+.objectLabel {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: -14px;
+    padding-bottom: 10px;
+}
+.objectLabelWithFindings {
+    color: #f55;
+}
+
+.objectTypeIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.objectTypeIcon > button {
+    background: none;
+    border: 0;
+    font-size: 1.5rem;
+}
+
+.appSelectorModalWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background: #ddd;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    color: #444;
+}
+
+.appSelectorModalWrapperOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+.objectMarker {
+    position: absolute;
+    left: -25%;
+    top: -20%;
+    width: 150%;
+    height: 150%;
+}
+.objectMarker > img {
+    width: 100%;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+

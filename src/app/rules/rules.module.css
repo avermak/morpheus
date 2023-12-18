@@ -1,0 +1,62 @@
+.container {
+    width: 300px;
+    border-left: #666 3px double;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.header {
+    background-color: #0699;
+    padding: 5px;
+    color: #bbb;
+    font-size: 0.75rem;
+    display: flex;
+}
+.header > div {
+    align-self: center;
+}
+.header > div:first-child {
+    font-weight: bold;
+}
+.header > div:nth-child(2) {
+    flex: 1;
+}
+.header button {
+    padding: 1px 8px 1px 8px;
+    margin-left: 10px;
+    color: #0a0;
+}
+.header button[disabled] {
+    color: #666;
+}
+.content {
+    background-color: #4447;
+    flex: 1;
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: #bbb;
+    overflow: auto;
+    height: 100%;
+    display: flex;
+}
+.findings {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+.findings > div {
+    display: flex;
+    flex-direction: row;
+    cursor: default;
+}
+.findings > div[data-rowtype="odd"] {
+    background-color: #4446;
+}
+.findings > div:hover {
+    background-color: #444;
+}
+.findings > div > div {
+    padding: 5px;
+}

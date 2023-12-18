@@ -1,0 +1,94 @@
+[
+  {
+    "title": "Actors",
+    "objects": [
+      {
+        "id": "customer",
+        "label": "Customer"
+      },
+      {
+        "id": "colleague",
+        "label": "Colleague"
+      },
+      {
+        "id": "thirdparty",
+        "label": "Third Party"
+      },
+      {
+        "id": "merchant",
+        "label": "Merchant"
+      }
+    ]
+  },
+  {
+    "title": "Channels",
+    "objects": [
+      {
+        "id": "web",
+        "label": "Web"
+      },
+      {
+        "id": "mobile",
+        "label": "Mobile"
+      },
+      {
+        "id": "Voice",
+        "label": "voice"
+      },
+      {
+        "id": "chat",
+        "label": "Chat"
+      },
+      {
+        "id": "email",
+        "label": "email"
+      }
+    ]
+  },
+  {
+    "title": "Infrastructure",
+    "objects": [
+      {
+        "id": "gtm",
+        "label": "GTM"
+      },
+      {
+        "id": "ltm",
+        "label": "LTM"
+      },
+      {
+        "id": "firewall",
+        "label": "Firewall"
+      },
+      {
+        "id": "internet",
+        "label": "internet"
+      },
+      {
+        "id": "cloud",
+        "label": "Cloud"
+      }
+    ]
+  },
+  {
+    "title": "Software",
+    "objects": [
+      {
+        "id": "component",
+        "label": "Component"
+      },
+      {
+        "id": "application",
+        "label": "Application"
+      },
+      {
+        "id": "apiinterface",
+        "label": "API Interface"
+      },
+      {
+        "id": "backgroundprocess",
+        "label": "Background Process"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>customer</title>
+    <g id="customer" stroke="none" stroke-width="1" fill="#0699" fill-rule="evenodd">
+        <g id="person" transform="translate(59.000000, 41.000000)" stroke="#006699" stroke-width="7">
+            <circle id="Oval" cx="70" cy="34" r="34"></circle>
+            <path d="M139,153 C139,114.892352 107.88379,84 69.5,84 L69.5,84 C31.1162099,84 0,114.892352 0,153 L139,153 Z" id="Path"></path>
+        </g>
+        <g id="card" transform="translate(129.000000, 134.000000)" fill-rule="nonzero">
+            <path d="M0,21.942029 L0,38.4 C0,45.9227053 7.4,52 16.56,52 L63.4,52 C72.56,52 80,45.8898551 80,38.3671498 L80,21.942029 C80,19.773913 77.84,18 75.2,18 L4.8,18 C2.16,18 0,19.773913 0,21.942029 Z" id="Path" stroke="#006699" stroke-width="5" fill="#292D32"></path>
+            <path d="M80,13.9626168 C80,16.1831776 77.84,18 75.2,18 L4.8,18 C2.16,18 0,16.1831776 0,13.9626168 L0,13.928972 C0,6.22429907 7.4,0 16.56,0 L63.4,0 C72.56,0 80,6.25794393 80,13.9626168 Z" id="Path" stroke="#006699" stroke-width="5" fill="#292D32"></path>
+            <path d="M24,40 L16,40 C14.36,40 13,38.8666667 13,37.5 C13,36.1333333 14.36,35 16,35 L24,35 C25.64,35 27,36.1333333 27,37.5 C27,38.8666667 25.64,40 24,40 Z" id="Path" fill="#006699"></path>
+            <path d="M50,40 L34,40 C32.36,40 31,38.8666667 31,37.5 C31,36.1333333 32.36,35 34,35 L50,35 C51.64,35 53,36.1333333 53,37.5 C53,38.8666667 51.64,40 50,40 Z" id="Path" fill="#006699"></path>
+        </g>
+    </g>
+</svg>
