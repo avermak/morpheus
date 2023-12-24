@@ -1,5 +1,4 @@
 import ReactFlow, {
-  ReactFlowProvider,
   useNodesState,
   useEdgesState,
   addEdge,
@@ -8,7 +7,7 @@ import ReactFlow, {
   useReactFlow, ConnectionMode, MarkerType, applyEdgeChanges,
 } from 'reactflow';
 import { useMorpheusStore } from './store';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import nodeTypes from './nodetypes';
 import TitleBlock from './titleblock';
 
@@ -28,39 +27,31 @@ const Canvas = () => {
   const addNode = useMorpheusStore(state => state.addNode);
   const {screenToFlowPosition} = useReactFlow();
   const checkpointState = useMorpheusStore(state => state.checkpoint);
+  const [counts, setCounts] = useState({nodeCount: 0, edgeCount: 0});
+  const setNodeDragging = useMorpheusStore(state => state.setNodeDragging);
 
   const onConnect = useCallback((connection) => {
     console.log(`onConnect: `, connection);
     setEdges((oldEdges) => addEdge(connection, oldEdges));
-  }, [setEdges]);
-
-  const onBeforeEdgesChange = useCallback(e => {
-    console.log(`Edges change `, e);
-    onEdgesChange(e);
     checkpointState();
-  }, []);
+  }, [setEdges, checkpointState]);
 
-  const onBeforeNodesChange = useCallback(e => {
-    // console.log(`Nodes change `, e);
-    onNodesChange(e);
-  }, []);
-
-  const onNodeDragStart = useCallback((e, node, nodes) => {
-    console.log(`Drag start `, e, node, nodes);
-    // checkpointState();
-  }, []);
+  const onNodeDragStart = useCallback(() => {
+    setNodeDragging(true);
+  }, [setNodeDragging]);
 
   const onNodeDragStop = useCallback((e, node, nodes) => {
     console.log(`Drag stop `, e, node, nodes);
+    setNodeDragging(false);
     checkpointState();
-  }, []);
+  }, [setNodeDragging, checkpointState]);
 
   const onInit = useCallback(reactFlow => {
     console.log(`ReactFlow initialized:`);
     setReactFlow(reactFlow);
     checkpointState();
     runRules();
-  }, []);
+  }, [setReactFlow, checkpointState, runRules]);
 
   const onClick = useCallback(event => {
     if (canvasArmedData) {
@@ -78,8 +69,9 @@ const Canvas = () => {
         origin: [0.5, 0.0],
       };
       addNode(newNode);
+      checkpointState();
     }
-  }, [canvasArmedData]);
+  }, [canvasArmedData, checkpointState]);
 
   return (
       <div className="reactflow-wrapper" id="reactflow-wrapper">
@@ -87,8 +79,8 @@ const Canvas = () => {
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
-          onNodesChange={onBeforeNodesChange}
-          onEdgesChange={onBeforeEdgesChange}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           onClick={onClick}
           onNodeDragStart={onNodeDragStart}
@@ -96,6 +88,7 @@ const Canvas = () => {
           onInit={onInit}
           connectionMode={ConnectionMode.Loose}
           defaultEdgeOptions={{type: 'smoothstep', markerEnd: {type: MarkerType.ArrowClosed, width: 20, height: 20}}}
+          nodeDragThreshold={2}
         >
           <Background variant="dots" color="#777d" style={{cursor:'crosshair'}} />
           <Controls />

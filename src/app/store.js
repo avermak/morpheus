@@ -3,7 +3,8 @@ import {create} from 'zustand';
 import {runRules} from '@/app/rules/engine';
 import {produce} from 'immer';
 
-const MAX_UNDO_STACK_DEPTH = 1000;
+const MAX_UNDO_STACK_DEPTH = 1000; // max undo depth. TODO: improve algorithm to only keep incremental deltas on stack instead of entire serialized state.
+const CHECKPOINT_FIDELITY = 100; // ms within which subsequent checkpoint calls will be coalesced.
 
 const initialNodes = [
   { id: 'customer_001', type: 'customer', data: { label: 'Customer' }, position: { x: 200, y: 125 }, sourcePosition: Position.Right, targetPosition: Position.Left },
@@ -76,9 +77,11 @@ const morpheusStore = (set) => ({
     if (!state.reactFlow) {
       return;
     }
+    const nodes = state.reactFlow.getNodes();
+    console.log(`Adding Node: ${nodes ? nodes.length : '-'}`);
     state.reactFlow.addNodes(nodeData);
     state.rules.run();
-    return {};
+    return {checkpointed: false};
   }),
 
   setCustomNodeData: (nodeId, data) => set(state => {
@@ -97,7 +100,19 @@ const morpheusStore = (set) => ({
   undoCursor: -1,
   canUndo: false,
   canRedo: false,
+  nodeDragging: false,
+  setNodeDragging: flag => set(state => produce(state, draft => {draft.nodeDragging = flag})),
+  checkpointed: true,
+  setCheckpointed: flag => set(state => produce(state, draft => {draft.checkpointed = flag})),
+  cpTimer: 0,
   checkpoint: () => set(state => produce(state, draft => {
+    if (draft.cpTimer) {
+      console.log(`Checkpointer active, new call ignored.`);
+      return;
+    }
+    draft.cpTimer = setTimeout(state.checkpointNow, CHECKPOINT_FIDELITY);
+  })),
+  checkpointNow: () => set(state => produce(state, draft => {
     const state1 = serializeState(state);
     const state0 = state.undoCursor > -1 ? state.undoStack[state.undoCursor] : '';
     console.log(`STATES (${state0 === state1 ? '√' : 'x'}):\n\n${state0}\n\n${state1}`);
@@ -110,6 +125,8 @@ const morpheusStore = (set) => ({
       // console.log(`Undo stack [items=${draft.undoStack.length}, cursor=${draft.undoCursor}]`);
       draft.canUndo = draft.undoCursor > 0;
       draft.canRedo = draft.undoCursor < draft.undoStack.length - 1;
+      draft.checkpointed = true;
+      draft.cpTimer = 0;
     } else {
       console.log(`Checkpoint ignored. No serializable state change detected.`);
     }
