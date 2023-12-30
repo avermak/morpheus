@@ -28,17 +28,34 @@
     padding: 3px;
     color: #aaad;
     vertical-align: top;
+    height: 1px;
 }
 
 .title-block td > div:first-child {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.title-block td > div > div:first-child {
     font-size: 0.6rem;
     color: #888;
 }
-.title-block td > div:nth-child(2) {
+.title-block td > div > div:nth-child(2) {
     font-size: 0.8rem;
     color: #aaa;
     min-height: 20px;
+    flex: 1;
 }
+
+.editableLabel {
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+.editableLabel:focus {
+  outline: 0px solid transparent;
+}
+
 
   /* .react-flow__pane {
     cursor: crosshair;

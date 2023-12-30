@@ -36,6 +36,11 @@ const Canvas = () => {
     checkpointState();
   }, [setEdges, checkpointState]);
 
+  const onEdgesDelete = useCallback(edges => {
+    console.log(`Edge deleted`, edges);
+    checkpointState();
+  }, [checkpointState]);
+
   const onNodeDragStart = useCallback(() => {
     setNodeDragging(true);
   }, [setNodeDragging]);
@@ -45,6 +50,11 @@ const Canvas = () => {
     setNodeDragging(false);
     checkpointState();
   }, [setNodeDragging, checkpointState]);
+
+  const onNodesDelete = useCallback(nodes => {
+    console.log(`Node deleted`, nodes);
+    checkpointState();
+  }, [checkpointState]);
 
   const onInit = useCallback(reactFlow => {
     console.log(`ReactFlow initialized:`);
@@ -80,7 +90,9 @@ const Canvas = () => {
           edges={edges}
           nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
+          onNodesDelete={onNodesDelete}
           onEdgesChange={onEdgesChange}
+          onEdgesDelete={onEdgesDelete}
           onConnect={onConnect}
           onClick={onClick}
           onNodeDragStart={onNodeDragStart}

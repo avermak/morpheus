@@ -43,17 +43,19 @@ const deserializeAndApplyState = (serialState, state) => {
 const morpheusStore = (set) => ({
 
   titleBlock: {
-    businessUnit: '',
+    businessUnit: 'CTO',
     platform: '',
-    documentType: '',
-    title: '',
-    createdBy: '',
+    documentType: 'Logical Architecture',
+    title: 'Enterprise Configuration Management',
+    createdBy: 'anup.k.verma@aexp.com',
     documentStatus: '',
-    createDate: '',
-    lastRevisionDate: '',
-    version: '',
+    createDate: '2023-DEC-02',
+    lastRevisionDate: '2023-DEC-26',
+    version: '0.1',
   },
-  setTitleBlock: (titleBlock) => set(state => ({titleBlock})),
+  setTitleBlock: (titleBlock) => set(state => produce(state, draft => {
+    draft.titleBlock = titleBlock;
+  })),
 
   reactFlow: null,
   setReactFlow: reactFlow => set(state => produce(state, draft => {
@@ -115,7 +117,7 @@ const morpheusStore = (set) => ({
   checkpointNow: () => set(state => produce(state, draft => {
     const state1 = serializeState(state);
     const state0 = state.undoCursor > -1 ? state.undoStack[state.undoCursor] : '';
-    console.log(`STATES (${state0 === state1 ? '√' : 'x'}):\n\n${state0}\n\n${state1}`);
+    // console.log(`STATES (${state0 === state1 ? '√' : 'x'}):\n\n"${state0}"\n\n"${state1}"`);
     if (state1 !== state0) { // Only if change detected.
       draft.undoStack.splice(state.undoCursor + 1, state.undoStack.length - state.undoCursor - 1, state1);
       if (state.undoStack.length > MAX_UNDO_STACK_DEPTH) { // Trim bottom of stack on overflow
@@ -127,6 +129,7 @@ const morpheusStore = (set) => ({
       draft.canRedo = draft.undoCursor < draft.undoStack.length - 1;
       draft.checkpointed = true;
       draft.cpTimer = 0;
+      console.log(`State checkpointed`);
     } else {
       console.log(`Checkpoint ignored. No serializable state change detected.`);
     }
