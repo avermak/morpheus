@@ -6,6 +6,7 @@ import './object.css';
 import ObjectMarker from "@/app/objects/objectmarker";
 import {useMorpheusStore} from "@/app/store";
 import {getFindingsForNodeId} from "@/app/rules/engine";
+import Editablelabel from '../editablelabel';
 
 export default memo(({id, data, label, isConnectable, mode}) => {
   const findings = useMorpheusStore(state => state.rules.findings);
@@ -29,7 +30,9 @@ export default memo(({id, data, label, isConnectable, mode}) => {
       <div>
         <img src={icons['customer'].src} alt={'Customer'} className={"objectIcon"} />
       </div>
-      <div className={`objectLabel ${getFindings().length > 0 ? 'objectLabelWithFindings' : ''}`}>{data ? data.label : label}</div>
+      <div className={`objectLabel ${getFindings().length > 0 ? 'objectLabelWithFindings' : ''}`}>
+        <Editablelabel defaultValue={data ? data.label : label} style={{textAlign: 'center'}} />
+      </div>
       {defaultHandles(isConnectable)}
       {data && data.findingAlert ? <ObjectMarker /> : ''}
     </div>

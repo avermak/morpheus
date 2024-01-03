@@ -3,6 +3,22 @@
 A technical architecture diagramming tool with built-in rules for basic validation of the diagram as well as compliance to architecture standards.
 
 ## Features
+- [ ] Connect anywhere
+- [ ] Edit object/connector labels
+- [ ] Resizable objects
+- [ ] Additional objects
+  - [ ] System boundary
+- [ ] Save/Open
+  - [ ] Save to GitHub
+  - [ ] Export/download
+  - [ ] Save working draft to local storage
+  - [ ] Export png/svg
+- [ ] Drawing tools
+  - [ ] Align/distribute
+- [ ] Select multiple
+  - [ ] Rect drag
+  - [ ] shift, ctrl/cmd
+
 
 
 ## Technical Details

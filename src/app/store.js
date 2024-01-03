@@ -66,7 +66,7 @@ const morpheusStore = (set) => ({
   initialEdges,
 
   devtool: {
-    enabled: false,
+    enabled: true,
     setEnabled: enabled => set(state => produce(state, draft => {
       draft.devtool.enabled = enabled;
     })),
@@ -159,7 +159,7 @@ const morpheusStore = (set) => ({
   rules: {
     running: false,
     dirty: false,
-    panelVisible: true,
+    panelVisible: false,
     setPanelVisible: visible => set(state => produce(state, draft => {
       draft.rules.panelVisible = visible;
     })),

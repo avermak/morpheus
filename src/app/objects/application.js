@@ -8,6 +8,7 @@ import './object.css';
 import {useMorpheusStore} from "@/app/store";
 import {getFindingsForNodeId} from "@/app/rules/engine";
 import ObjectMarker from "@/app/objects/objectmarker";
+import Editablelabel from '../editablelabel';
 
 const getIcon = type => {
   switch (type) {
@@ -70,7 +71,9 @@ export default memo(({id, label, data, isConnectable, mode}) => {
       <div>
         <img src={icons['application'].src} alt={'Application'} className={"objectIcon"} />
       </div>
-      <div className={`objectLabel ${getFindings().length > 0 ? 'objectLabelWithFindings' : ''}`}>{data ? data.label : label}</div>
+      <div className={`objectLabel ${getFindings().length > 0 ? 'objectLabelWithFindings' : ''}`}>
+       <Editablelabel defaultValue={data ? data.label : label} style={{textAlign: 'center'}} />
+      </div>
       {defaultHandles(isConnectable)}
       <div className={"objectTypeIcon"}>
         <button onClick={promptChooseAppData}>

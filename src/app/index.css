@@ -49,11 +49,21 @@
 
 .editableLabel {
   font-family: inherit;
+}
+.editableLabel > textarea {
+  font-family: inherit;
   font-size: 0.8rem;
   color: #aaa;
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  resize: none;
 }
-.editableLabel:focus {
+.editableLabel > textarea:focus {
   outline: 0px solid transparent;
+  /* outline: 1px solid #8888; */
 }
 
 
